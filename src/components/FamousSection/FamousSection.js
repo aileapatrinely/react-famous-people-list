@@ -29,19 +29,24 @@ class FamousSection extends Component {
     console.log(`The famous person is `, this.state.famousPerson);
     this.setState({
       people: [...this.state.people, this.state.famousPerson],
+      famousPerson: {
+        name: '',
+        role: '',
+      },
     });
   };
 
   render() {
-    const liPeople = this.state.people.map((item, index) => (
-      <li key={index}>{item.name}</li>
-    ));
+    const liPeople = this.state.people.map((item, index) => {
+      return <li key={index}>{item.name}</li>;
+    });
     return (
       <section className="new-person-section">
         <form onSubmit={this.addPerson}>
           <label htmlFor="name-input">Name:</label>
           <input
             id="name-input"
+            value={this.state.famousPerson.name}
             onChange={(event) => this.handleChangeFor(event, 'name')}
           />
           <label htmlFor="role-input">Famous for:</label>
@@ -55,7 +60,7 @@ class FamousSection extends Component {
           {this.state.famousPerson.name} is famous for "
           {this.state.famousPerson.role}".
         </p>
-        <ul>{this.state.liPeople}</ul>
+        <ul>{liPeople}</ul>
       </section>
     );
   }

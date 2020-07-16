@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 
 class FamousPersonList extends Component {
+  state = {
+  people: [this.props.addEm();]
+  }
   render() {
-    const liPeople = this.props.people.map((item, index) => {
+    const liPeople = this.state.people.map((item, index) => {
       return <li key={index}>{item.name}</li>;
       return (
         <div>

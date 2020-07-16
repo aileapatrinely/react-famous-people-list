@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
 class FamousPerson extends Component {
-  state = {
+  constructor(props) {
+    super(props);
+    this.state = {
     famousPerson: {
       name: '',
       role: '',
@@ -35,6 +37,7 @@ class FamousPerson extends Component {
     });
   };
   render() {
+    });
     return (
       <form onSubmit={this.addPerson}>
         <label htmlFor="name-input">Name:</label>
@@ -53,6 +56,6 @@ class FamousPerson extends Component {
       </form>
     );
   }
-}
+
 
 export default FamousPerson;

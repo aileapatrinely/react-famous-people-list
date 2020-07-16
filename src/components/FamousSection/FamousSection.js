@@ -7,7 +7,12 @@ class FamousSection extends Component {
       name: '',
       role: '',
     },
-    people: [],
+    people: [
+      {
+        name: '',
+        role: '',
+      },
+    ],
   };
 
   handleChangeFor = (event, propertyName) => {
@@ -22,9 +27,15 @@ class FamousSection extends Component {
   addPerson = (event) => {
     event.preventDefault();
     console.log(`The famous person is `, this.state.famousPerson);
+    this.setState({
+      people: [...this.state.people, this.state.famousPerson],
+    });
   };
 
   render() {
+    const liPeople = this.state.people.map((item, index) => (
+      <li key={index}>{item.name}</li>
+    ));
     return (
       <section className="new-person-section">
         <form onSubmit={this.addPerson}>
@@ -44,7 +55,7 @@ class FamousSection extends Component {
           {this.state.famousPerson.name} is famous for "
           {this.state.famousPerson.role}".
         </p>
-        <ul>{/* The list should go here. */}</ul>
+        <ul>{this.state.liPeople}</ul>
       </section>
     );
   }
